@@ -1,0 +1,9 @@
+- name: add cron task scheduling
+  cron:
+    job: "cd {{ deploy_laravel_dest}}{{ deploy_laravel_domain }} && php artisan schedule:run >> /dev/null 2>&1"
+    name: "task scheduling {{ deploy_laravel_domain }}"
+    minute: "*"
+    hour: "*"
+    day: "*"
+    month: "*"
+    weekday: "*"

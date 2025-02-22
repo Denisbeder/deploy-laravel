@@ -1,0 +1,16 @@
+---
+- name: npm install
+  shell: "npm install"
+  args:
+    chdir: "{{ deploy_laravel_dest }}/{{ deploy_laravel_domain }}"
+  when: deploy_laravel_build_assets
+  tags:
+    - deploy_laravel
+
+- name: npm run
+  shell: "npm run production --silent"
+  args:
+    chdir: "{{ deploy_laravel_dest }}/{{ deploy_laravel_domain }}"
+  when: deploy_laravel_build_assets
+  tags:
+    - deploy_laravel
