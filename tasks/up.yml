@@ -1,4 +1,4 @@
 - name: Application up
   shell: php artisan up
   args:
-    chdir: "{{ deploy_laravel_dest }}/{{ deploy_laravel_domain }}"
+    chdir: "{{ domain_path }}"

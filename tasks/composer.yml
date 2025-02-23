@@ -1,8 +1,8 @@
 - name: Composer Install
   composer:
     command: install
-    working_dir: "{{ deploy_laravel_dest }}/{{ deploy_laravel_domain }}"
-    no_dev: "{{ deploy_laravel_composer_no_dev }}"
+    working_dir: "{{ domain_path }}"
+    no_dev: "{{ require_composer_no_dev }}"
   environment:
     COMPOSER_NO_INTERACTION: "1"
     COMPOSER_ALLOW_SUPERUSER: "1"

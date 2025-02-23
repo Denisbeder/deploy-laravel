@@ -1,7 +1,7 @@
 - name: Generate Key
   shell: php artisan key:generate
   args:
-    chdir: "{{ deploy_laravel_dest }}/{{ deploy_laravel_domain }}"
-  when: deploy_laravel_generate_key
+    chdir: "{{ domain_path }}"
+  when: generate_key
   tags:
     - deploy_laravel

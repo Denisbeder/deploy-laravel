@@ -1,10 +1,10 @@
 - name: Check if site is already deployed
   stat:
-    path: "{{ deploy_laravel_dest }}/{{ deploy_laravel_domain }}/artisan"
+    path: "{{ domain_path }}/artisan"
   register: site_already_deployed
 
 - name: Down Application
   shell: php artisan down
   args:
-    chdir: "{{ deploy_laravel_dest }}/{{ deploy_laravel_domain }}"
+    chdir: "{{ domain_path }}"
   when: site_already_deployed.stat.exists

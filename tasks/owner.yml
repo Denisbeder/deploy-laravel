@@ -1,6 +1,6 @@
 - name: Set group to www-data
   file:
-    path: "{{ deploy_laravel_dest }}/{{ deploy_laravel_domain }}"
+    path: "{{ domain_path }}"
     state: directory
     owner: "{{ user }}"
     group: www-data

@@ -4,10 +4,10 @@
 
 - name: Pesquisa e atribui o valor do domínio
   set_fact:
-    git_config_domain: "{{ gitconfig.stdout_lines | regex_search(deploy_laravel_domain) }}"
+    git_config_domain: "{{ gitconfig.stdout_lines | regex_search(domain) }}"
 
 - name: Add the domain as safe.directory in git config
-  command: git config --global --add safe.directory "{{ deploy_laravel_dest }}{{ deploy_laravel_domain }}"
+  command: git config --global --add safe.directory "{{ domain_path }}"
   when: not git_config_domain
 
 - name: Add github.com to known_hosts if it doesn't exist yet
@@ -19,9 +19,9 @@
 
 - name: Clone repository
   git:
-    repo: "{{ deploy_laravel_repo }}"
-    dest: "{{ deploy_laravel_dest }}/{{ deploy_laravel_domain }}"
-    version: "{{ deploy_laravel_repo_version }}"
+    repo: "{{ repository }}"
+    dest: "{{ domain_path }}"
+    version: "{{ repository_version }}"
     force: yes
     update: yes
     accept_hostkey: yes

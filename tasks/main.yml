@@ -9,10 +9,10 @@
 - import_tasks: cache.yml
 - import_tasks: key.yml
 - import_tasks: cron.yml
-  when: deploy_laravel_cron
+  when: set_cron
 
 - import_tasks: supervisor.yml
-  when: deploy_laravel_supervisor
+  when: set_supervisor
 
 - import_tasks: up.yml
 - import_tasks: queue.yml
