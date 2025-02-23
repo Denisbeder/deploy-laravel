@@ -1,17 +1,8 @@
-Ansible Role: deploy laravel
-===========================
+# Ansible Deploy Laravel Application
 
-This role does: deploy a laravel application
+Before start, make sure you have created the SSH public keys on the remote host and added them to your repository deploy keys configuration.
 
-Installation
---------------
-
-    ansible-galaxy install uspdev.deploy_laravel
-
-
-Example Playbook
-----------------
-
-    - hosts: servers
-      roles:
-         - uspdev.deploy_laravel
+### Run
+```
+ansible-playbook deploy.yml
+```
