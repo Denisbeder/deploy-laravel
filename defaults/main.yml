@@ -1,8 +1,10 @@
 ---
-deploy_laravel_domain: "uspdev.usp.br"
-deploy_laravel_dest: "/var/www/"
-deploy_laravel_repo: "https://github.com/laravel/laravel.git"
-deploy_laravel_repo_version: "master"
+user: devops
+
+deploy_laravel_domain: "example.com"
+deploy_laravel_dest: "/var/www"
+deploy_laravel_repo: "git@github.com:Denisbeder/douradosagora.git"
+deploy_laravel_repo_version: "main"
 
 # Disables installation of require-dev packages
 deploy_laravel_composer_no_dev: no
@@ -12,22 +14,20 @@ deploy_laravel_build_assets: no
 deploy_laravel_generate_key: no
 deploy_laravel_use_apache: yes
 
-# do you desire get password database from a file?
-deploy_laravel_dbpass_from_file: no
-deploy_laravel_dbpass_file: "/etc/.jenkinsdeploy/{{deploy_laravel_app}}"
-
 # Env variables
 deploy_laravel_env:
   - name: DB_USERNAME
-    value: 'laravel'
+    value: 'site_user'
   - name: DB_PASSWORD
     value: 'secret'
   - name: DB_DATABASE
-    value: 'laravel'
+    value: 'site'
   - name: DB_HOST
     value: "localhost"
   - name: APP_ENV
     value: "production"
+  - name: REDIS_HOST
+    value: "localhost"
 
 # task schedule vars to cron
 deploy_laravel_cron: true

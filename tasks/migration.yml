@@ -1,4 +1,4 @@
-- name: database migration
+- name: Database migration
   shell: php artisan migrate --force 
   args:
     chdir: "{{ deploy_laravel_dest }}/{{ deploy_laravel_domain }}"

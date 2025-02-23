@@ -1,21 +1,29 @@
-- name: Gitconfig list
+- name: Git config list
   command: git config --list
   register: gitconfig
 
 - name: Pesquisa e atribui o valor do domínio
   set_fact:
-    domain: "{{ gitconfig.stdout_lines | regex_search(deploy_laravel_domain) }}"
+    git_config_domain: "{{ gitconfig.stdout_lines | regex_search(deploy_laravel_domain) }}"
 
-- name: Adiciona o domínio como safe.directory no gitconfig
+- name: Add the domain as safe.directory in git config
   command: git config --global --add safe.directory "{{ deploy_laravel_dest }}{{ deploy_laravel_domain }}"
-  when: not domain
+  when: not git_config_domain
 
-- name: clone repo
+- name: Add github.com to known_hosts if it doesn't exist yet
+  known_hosts:
+    name: github.com
+    key: "{{ lookup('pipe', 'ssh-keyscan -t rsa github.com 2>/dev/null') }}"
+    path: "~/.ssh/known_hosts"
+    state: present
+
+- name: Clone repository
   git:
     repo: "{{ deploy_laravel_repo }}"
     dest: "{{ deploy_laravel_dest }}/{{ deploy_laravel_domain }}"
     version: "{{ deploy_laravel_repo_version }}"
     force: yes
     update: yes
+    accept_hostkey: yes
   tags:
     - deploy_laravel

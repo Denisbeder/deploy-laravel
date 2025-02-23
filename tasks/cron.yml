@@ -1,4 +1,4 @@
-- name: add cron task scheduling
+- name: Add CRON task scheduling [artisan schedule:run]
   cron:
     job: "cd {{ deploy_laravel_dest}}{{ deploy_laravel_domain }} && php artisan schedule:run >> /dev/null 2>&1"
     name: "task scheduling {{ deploy_laravel_domain }}"

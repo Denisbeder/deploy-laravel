@@ -1,4 +1,4 @@
-- name: key artisan
+- name: Generate Key
   shell: php artisan key:generate
   args:
     chdir: "{{ deploy_laravel_dest }}/{{ deploy_laravel_domain }}"

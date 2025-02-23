@@ -2,8 +2,9 @@
   apt:
     name: "supervisor"
     update_cache: yes
+  become: true
 
-- name: supervisor.j2
+- name: Create supervisor configuration file
   template:
     src: templates/supervisor.j2
     dest: "/etc/supervisor/conf.d/{{ deploy_laravel_domain.split('.')[0] | lower }}_queue_worker_default.conf"

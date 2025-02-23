@@ -1,0 +1,12 @@
+---
+
+- hosts: all
+  gather_facts: False
+  remote_user: "{{ user }}"
+
+  vars_files:
+    - defaults/main.yml
+
+  tasks:
+    - name: Importar tarefas do arquivo main.yml
+      import_tasks: tasks/main.yml

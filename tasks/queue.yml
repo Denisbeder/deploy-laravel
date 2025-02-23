@@ -1,4 +1,4 @@
-- name: restart queue
+- name: Restart Queue
   command: php artisan queue:restart
   args:
     chdir: "{{ deploy_laravel_dest }}/{{ deploy_laravel_domain }}"

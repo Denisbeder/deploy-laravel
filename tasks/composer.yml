@@ -1,4 +1,4 @@
-- name: composer install
+- name: Composer Install
   composer:
     command: install
     working_dir: "{{ deploy_laravel_dest }}/{{ deploy_laravel_domain }}"

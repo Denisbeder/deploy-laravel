@@ -1,5 +1,5 @@
 ---
-- name: npm install
+- name: NPM Install
   shell: "npm install"
   args:
     chdir: "{{ deploy_laravel_dest }}/{{ deploy_laravel_domain }}"
@@ -7,7 +7,7 @@
   tags:
     - deploy_laravel
 
-- name: npm run
+- name: NPM Run
   shell: "npm run production --silent"
   args:
     chdir: "{{ deploy_laravel_dest }}/{{ deploy_laravel_domain }}"
