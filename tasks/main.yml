@@ -19,4 +19,5 @@
 
 - import_tasks: up.yml
 - import_tasks: queue.yml
+- import_tasks: restart_services.yml
 

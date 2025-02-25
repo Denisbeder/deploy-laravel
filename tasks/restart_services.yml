@@ -1,0 +1,13 @@
+---
+
+- name: Restart PHP-FPM service
+  service:
+    name: php7.4-fpm
+    state: restarted
+  become: true
+
+- name: Restart Nginx service
+  service:
+    name: nginx
+    state: restarted
+  become: true
