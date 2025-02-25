@@ -28,6 +28,9 @@ env_config:
   - name: REDIS_HOST
     value: "localhost"
 
+# If set to true, the database migrations will be executed during deployment
+execute_migration: false
+
 # task schedule vars to cron
 set_cron: true
 
