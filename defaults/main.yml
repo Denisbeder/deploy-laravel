@@ -7,7 +7,7 @@ repository: "git@github.com:Denisbeder/douradosagora.git"
 repository_version: "main"
 
 # Disables installation of require-dev packages
-require_composer_no_dev: false
+require_composer_no_dev: no
 
 # turn on/off some options
 build_assets: false
