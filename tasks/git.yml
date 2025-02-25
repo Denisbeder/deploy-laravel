@@ -1,3 +1,10 @@
+---
+- name: Set Git core.fileMode to false
+  git_config:
+    name: core.fileMode
+    value: false
+    scope: global
+
 - name: Git config list
   command: git config --list
   register: git_config
