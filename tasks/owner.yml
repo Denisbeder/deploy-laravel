@@ -14,6 +14,11 @@
   tags:
     - deploy_laravel
 
+- name: Apply chmod 755 to main directory
+  command: chmod -R 775 "{{ domain_path }}"
+  tags:
+    - deploy_laravel
+
 - name: Apply chmod 755 to directories
   command: find "{{ domain_path }}" -type d -exec chmod 755 {} \;
   tags:
@@ -26,5 +31,10 @@
 
 - name: Apply correct permissions to storage and bootstrap/cache
   command: chmod -R ug+rwx "{{ domain_path }}/storage" "{{ domain_path }}/bootstrap/cache"
+  tags:
+    - deploy_laravel
+
+- name: Ensure that new files created inherit correct permissions
+  command: sudo chmod g+s "{{ domain_path }}"
   tags:
     - deploy_laravel
