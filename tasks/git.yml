@@ -1,10 +1,10 @@
 - name: Git config list
   command: git config --list
-  register: gitconfig
+  register: git_config
 
-- name: Pesquisa e atribui o valor do domínio
+- name: Search and assign the domain value
   set_fact:
-    git_config_domain: "{{ gitconfig.stdout_lines | regex_search(domain) }}"
+    git_config_domain: "{{ git_config.stdout_lines | regex_search(domain) }}"
 
 - name: Add the domain as safe.directory in git config
   command: git config --global --add safe.directory "{{ domain_path }}"
