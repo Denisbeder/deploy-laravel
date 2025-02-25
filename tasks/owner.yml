@@ -8,3 +8,23 @@
   become: true
   tags:
     - deploy_laravel
+
+- name: Apply chmod 644 to files
+  command: find "{{ domain_path }}" -type f -exec chmod 644 {} \;
+  tags:
+    - deploy_laravel
+
+- name: Apply chmod 755 to directories
+  command: find "{{ domain_path }}" -type d -exec chmod 755 {} \;
+  tags:
+    - deploy_laravel
+
+- name: Adjust group of storage and bootstrap/cache folders
+  command: chgrp -R www-data "{{ domain_path }}/storage" "{{ domain_path }}/bootstrap/cache"
+  tags:
+    - deploy_laravel
+
+- name: Apply correct permissions to storage and bootstrap/cache
+  command: chmod -R ug+rwx "{{ domain_path }}/storage" "{{ domain_path }}/bootstrap/cache"
+  tags:
+    - deploy_laravel
