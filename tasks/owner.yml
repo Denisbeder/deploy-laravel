@@ -9,14 +9,14 @@
   tags:
     - deploy_laravel
 
-- name: Apply chmod 644 to files
-  command: find "{{ domain_path }}" -type f -exec chmod 644 {} \;
-  tags:
-    - deploy_laravel
-
 - name: Apply chmod 755 to main directory
   command: chmod -R 775 "{{ domain_path }}"
   become: true
+  tags:
+    - deploy_laravel
+
+- name: Apply chmod 644 to files
+  command: find "{{ domain_path }}" -type f -exec chmod 644 {} \;
   tags:
     - deploy_laravel
 
