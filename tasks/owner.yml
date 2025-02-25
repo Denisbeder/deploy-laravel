@@ -16,6 +16,7 @@
 
 - name: Apply chmod 755 to main directory
   command: chmod -R 775 "{{ domain_path }}"
+  become: true
   tags:
     - deploy_laravel
 
