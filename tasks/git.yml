@@ -3,7 +3,8 @@
   git_config:
     name: core.fileMode
     value: false
-    scope: global
+    scope: local
+    repo: "{{ domain_path }}"
 
 - name: Git config list
   command: git config --list
